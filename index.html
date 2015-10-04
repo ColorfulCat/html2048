@@ -51,59 +51,77 @@
 			});
 		});
 
-		//显示等待进度框
-		function showProgressDialog() {
-			$.mobile.loadingMessageTextVisible = true;
-			$.mobile.showPageLoadingMsg('0. 0', "Please wait...");
-		}
-		//隐藏等待进度框
-		function cancelProgressDialog() {
-			$.mobile.hidePageLoadingMsg();
-		}
+		// //显示等待进度框
+		// function showProgressDialog() {
+		// 	$.mobile.loadingMessageTextVisible = true;
+		// 	$.mobile.showPageLoadingMsg('0. 0', "Please wait...");
+		// }
+		// //隐藏等待进度框
+		// function cancelProgressDialog() {
+		// 	$.mobile.hidePageLoadingMsg();
+		// }
 
-		function getCharts(){
+		// function getCharts(){
 
-			showProgressDialog();
-			$.get("server2048.php?playerName=Devis1&time=1999-11-11&bestPosition=11经理&bestSalary=11123&comment=hah1111ahaha", function(data){
-				parseData(data);
-				cancelProgressDialog();
-			});
-		}
+		// 	showProgressDialog();
+		// 	$.get("server2048.php?playerName=Devis1&time=1999-11-11&bestPosition=11经理&bestSalary=11123&comment=hah1111ahaha", function(data){
+		// 		parseData(data);
+		// 		cancelProgressDialog();
+		// 	});
+		// }
 
-		//解析结果
-		function parseData(data) {
+		// //解析结果
+		// function parseData(data) {
 
-			var array = new Array();
-			array = data.split("-=^=-", 10);
-			for(var i=0; i<array.length; i++){
-				var arr = array[i].split("=&=");
-				$("#li"+i).text((i+1)+" "+arr[0]+" "+arr[2]+" "+arr[3]+"万年");
-			}
+		// 	var array = new Array();
+		// 	array = data.split("-=^=-", 10);
+		// 	for(var i=0; i<array.length; i++){
+		// 		var arr = array[i].split("=&=");
+		// 		$("#li"+i).text((i+1)+" "+arr[0]+" "+arr[2]+" "+arr[3]+"万年");
+		// 	}
 
-			if(data == '数据获取失败，请重新获取！'){
-				return data;
-			}else{
-				return data;
-			}
-		}
+		// 	if(data == '数据获取失败，请重新获取！'){
+		// 		return data;
+		// 	}else{
+		// 		return data;
+		// 	}
+		// }
 
 	</script> 
 
 	<!-- 我的主页 -->
 	<div data-role="page" id="pageHome" data-theme="b">
-		<div data-role="header"  data-theme="b" data-tap-toggle="false" data-position="fixed" data-id="myheader">
-			<h1>2048(升职版)</h1>
+		<div data-role="header" data-tap-toggle="false" data-position="fixed" data-theme="b">
+			<h1 id="title">~2048(升职版)~</h1>
 		</div>
 
-		<div data-role="content" >
+		<div data-role="content">
+			<a href="javascript:newgame();" id="newgamebutton">新工作</a>
+			<p id="scoreText">你是<span id="position">小白</span>--年薪: <span id="score">0</span> 万</p>
+			<div id="grid-container">
+				<div class="grid-cell" id="grid-cell-0-0"></div>
+				<div class="grid-cell" id="grid-cell-0-1"></div>
+				<div class="grid-cell" id="grid-cell-0-2"></div>
+				<div class="grid-cell" id="grid-cell-0-3"></div>
 
-			<a id="newGameBtn" href="#page2048" data-role="button" data-transition="slide" data-corners="false" data-theme="c" >新游戏</a>
-			<a id="continueGameBtn" href="#page2048" data-role="button" data-transition="slide" data-corners="false" data-theme="c">继续游戏</a>
-			<a id="chartsBtn" href="#pageCharts" data-role="button" data-transition="flow" data-corners="false" data-theme="c">排行榜(暂未开通)</a>
-			<a id="helpBtn" href="#pageHelp" data-role="button" data-transition="flip" data-corners="false" data-theme="c">帮助</a>
+				<div class="grid-cell" id="grid-cell-1-0"></div>
+				<div class="grid-cell" id="grid-cell-1-1"></div>
+				<div class="grid-cell" id="grid-cell-1-2"></div>
+				<div class="grid-cell" id="grid-cell-1-3"></div>
+
+				<div class="grid-cell" id="grid-cell-2-0"></div>
+				<div class="grid-cell" id="grid-cell-2-1"></div>
+				<div class="grid-cell" id="grid-cell-2-2"></div>
+				<div class="grid-cell" id="grid-cell-2-3"></div>
+
+				<div class="grid-cell" id="grid-cell-3-0"></div>
+				<div class="grid-cell" id="grid-cell-3-1"></div>
+				<div class="grid-cell" id="grid-cell-3-2"></div>
+				<div class="grid-cell" id="grid-cell-3-3"></div>
+			</div>
 		</div>
 
-		<div data-role="footer" data-tap-toggle="false" data-theme="b" data-position="fixed" data-id="myfooter">
+		<div data-role="footer" data-tap-toggle="false" data-position="fixed" data-theme="b">
 			<h1>made by 大花猫</h1>
 		</div>
 	</div>
